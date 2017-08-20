@@ -1,0 +1,47 @@
+
+{% extends "AppBundle:Layout:templateadmin.html.twig" %}
+
+
+
+{% block body %}
+
+<h1>Gestions des commandes</h1>
+
+
+
+<table class="table table-hover" id="myTable">
+
+<thead>
+<tr>
+  <th>Client</th><th>Total TTC</th><th>Total HT</th><th>Tva</th><th>Date de création</th><th>Date de modification</th> <th>Modfication</th>
+</tr>
+</thead>
+<tbody>
+
+    {% for commande in listCommande %}
+    <tr>
+   
+      <td>{{ commande.user.firstname }} {{ commande.user.lastname }} </td>
+      <td>{{ commande.total }}</td>
+      <td>{{ commande.ht }}</td>
+      <td>{{ commande.totaltva }}</td>
+     <td>{{ commande.createdAt|date("d/m/Y \\ H:i") }}</td>
+      <td>{{ commande.updateAt|date("d/m/Y \\ H:i") }}</td>
+
+            <td>
+             
+              <a href="{{ path('update_orders', {'id': commande.id})}}"><i class="fa fa-pencil-square" aria-hidden="true"></i>Voir les détails</a>
+          
+          
+         </td>    </tr>
+
+    {% endfor %}
+
+
+</tbody>
+</table>
+
+
+
+
+{% endblock %}

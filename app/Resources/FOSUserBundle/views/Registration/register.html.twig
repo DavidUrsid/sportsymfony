@@ -1,0 +1,22 @@
+<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title">inscription</h4>
+      </div>
+      <div class="modal-body">
+      
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-info" data-dismiss="modal">Fermer</button>
+      </div>
+
+

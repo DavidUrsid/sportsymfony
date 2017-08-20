@@ -1,0 +1,76 @@
+
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+<section class="toutmillieu">
+
+  <div class="millieu">
+
+		
+
+
+
+  <article class="arti">
+
+{% set total = 0 %}
+  {% set ht = 0 %}
+    {% set tva = 0 %}
+
+<p> Votre commande a bien été enregistrée.</p>
+
+<table class="table table-hover">
+    	   <thead>
+<tr>
+  <th>Nom du produit</th><th>Son équipe</th><th>Image</th><th>Quantité</th><th>Prix TTC</th><th>Prix HT</th><th>Tva</th>
+</tr>
+</thead>
+<tbody>
+        
+        {% for com  in commandepanier %}
+    <tr>  
+
+    <td>{{ com.panier.product.description }} </td>
+    <td>{{ com.panier.product.team.libelle }} </td>
+    <td><img src="{{asset('uploads/images/products/'~com.panier.product.image)}}" height="200px"  height="150px"/></td> 
+    <td>{{ com.panier.quantity }} </td>
+    <td>{{ com.panier.total }} </td>
+    <td>{{ com.panier.ht }} </td>
+    <td>{{ com.panier.tva }} </td>
+      
+  
+
+      
+    </tr>
+
+
+    {% set total = total + com.panier.total %}
+      {% set ht = ht + com.panier.ht %}
+        {% set tva = tva + com.panier.tva %}
+
+    {% endfor %} 
+
+    	
+    	    	
+    	<p>Total Commande : {{ total }}€ </p>
+      <p>Total HT : {{ ht }}€ </p>
+      <p>Total tva : {{ tva }}€ </p>
+   
+
+</tbody>
+</table>
+
+<a href="{{ path('pdf')}}">Générer le PDF </a>
+
+
+
+
+
+
+
+</div>
+
+
+  </article>
+</section>
+{% endblock %}

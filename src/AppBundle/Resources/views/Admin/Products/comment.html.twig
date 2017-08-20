@@ -1,0 +1,58 @@
+
+{% extends "AppBundle:Layout:templateadmin.html.twig" %}
+
+
+
+{% block body %}
+
+<h1>Gestions des commentaires</h1>
+
+
+ {% if listComment is empty %}
+
+  <p>Pas de commentaires</p>
+
+{% else %}
+
+<table class="table table-hover">
+
+<thead>
+<tr>
+  <th>Image du produit</th><th>Produit</th><th>Note</th><th>Commentaire</th><th>Date de création</th><th>Date de modification</th> <th>Modfication</th>
+</tr>
+</thead>
+<tbody>
+
+
+    {% for comment in listComment %}
+    <tr>
+    <td><img src="{{asset('uploads/images/products/'~comment.product.image)}}" height="200px"  height="150px"/></td> 
+      <td>{{ comment.product.description }}</td>
+      <td>{{ comment.comment }}</td>
+     <td>{{ comment.note }}</td>
+      <td>{{ comment.createdAt|date("d/m/Y \\ H:i") }}</td>
+      <td>{{ comment.updateAt|date("d/m/Y \\ H:i") }}</td>
+
+            <td>
+          
+              <a href="{{ path('update_comment', {'id': comment.id})}}"><i class="fa fa-pencil-square" aria-hidden="true"></i>Modifier ce commentaire</a>
+           <a href="{{ path('delete_comment', {'id': comment.id})}}"><i class="fa fa-trash" aria-hidden="true"></i>Supprimer ce commentaire</a> 
+        
+         </td>    </tr>
+
+    {% endfor %}
+
+
+</tbody>
+</table>
+
+{% endif %}
+<p> Formulaire</p>
+<div class="well">
+
+  {{ form(form) }}
+
+</div>
+
+
+{% endblock %}

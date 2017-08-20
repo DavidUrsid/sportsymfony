@@ -1,0 +1,60 @@
+
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+
+<h4>Mes Commandes</h4>
+
+
+{% if listCommandes is empty  %}
+<p>Vous n'avez pas encore passer de commande. </p>
+{% else %}
+
+
+
+<table class="table table-hover">
+    	   <thead>
+<tr>
+  <th>Ma Commande</th><th>Date</th><th>Prix</th><th>Tva</th>
+</tr>
+</thead>
+<tbody>
+        
+        {% for commande  in listCommandes %}
+    <tr>  
+      
+     <td><a href="{{ path('voir_commande', {'id': commande.id})}}"><span class="glyphicon glyphicon glyphicon-eye-open"> Voir ma commande</span></a></td>
+     <td>{{ commande.createdAt|date("d/m/Y \\ H:i") }}</td>
+     <td>{{ commande.total }} €</td>
+     <td>{{ commande.totaltva }} €</td>
+      
+    </tr>
+
+ 
+    {% endfor %} 
+
+    	
+    	
+
+   
+
+</tbody>
+</table>
+
+
+{% endif %}
+
+
+
+
+</div>
+
+
+  </article>
+</section>
+{% endblock %}

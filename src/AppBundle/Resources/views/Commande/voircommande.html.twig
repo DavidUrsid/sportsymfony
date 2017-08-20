@@ -1,0 +1,75 @@
+
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+
+<h4>Mes Commandes</h4>
+
+
+{% if listCommandes is empty  %}
+<p>Vous n'avez pas encore passer de commande. </p>
+{% else %}
+
+{% set total = 0 %}
+    {% set ht = 0 %}
+    {% set tva = 0 %}
+
+
+<table class="table table-hover">
+    	   <thead>
+<tr>
+  <th>Nom du produit</th><th>Son équipe</th><th>Image</th><th>Quantité</th><th>Prix</th><th>Prix HT</th><th>Tva</th>
+</tr>
+</thead>
+<tbody>
+        
+        {% for commande  in listCommandes %}
+    <tr>  
+
+    <td>{{ commande.panier.product.description }} </td>
+    <td>{{ commande.panier.product.team.libelle }} </td>
+    <td><img src="{{asset('uploads/images/products/'~commande.panier.product.image)}}" height="200px"  height="150px"/></td> 
+    <td>{{ commande.panier.quantity }} </td>
+    <td>{{ commande.panier.total }} </td>
+    <td>{{ commande.panier.ht }} </td>
+    <td>{{ commande.panier.tva }} </td>
+      
+     <td><a href="{{ path('product', {'id': commande.panier.product.id})}}"><span class="glyphicon glyphicon glyphicon-eye-open"> Voir le produit</span></a></td>
+     
+      
+    </tr>
+
+
+    {% set total = total + commande.panier.total %}
+      {% set ht = ht + commande.panier.ht %}
+        {% set tva = tva + commande.panier.tva %}
+    
+
+    {% endfor %} 
+
+    	
+    	<p>Total Commande : {{ total }}</p>
+      <p>Total HT : {{ ht }}€ </p>
+      <p>Total tva : {{ tva }}€ </p>
+   
+
+</tbody>
+</table>
+
+
+{% endif %}
+
+
+
+
+</div>
+
+
+  </article>
+</section>
+{% endblock %}

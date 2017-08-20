@@ -1,0 +1,45 @@
+
+{% extends "AppBundle:Layout:templateadmin.html.twig" %}
+
+
+
+{% block body %}
+
+<h1>Gestions des produits</h1>
+<pre>
+
+</pre>
+
+{% if allsize%}
+<table class="table table-hover">
+
+<thead>
+<tr>
+  <th>Nom du produit</th><th>taille</th><th>Quantité</th><th>Date de création</th><th>Date de modification</th> <th>Modfication</th>
+</tr>
+</thead>
+<tbody>
+
+    {% for taille in allsize %}
+    <tr>  <td>{{ taille.product.description }}</td><td>{{ taille.size.libelle }}</td><td>{{ taille.stock }}</td><td>{{ taille.createdAt|date("d/m/Y\\ H:i") }}</td> <td>{{ taille.updateAt|date("d/m/Y \\ H:i") }}</td>
+      <td><a href="{{ path('update_size_product', {'id':taille.id})}}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+           <a href="{{ path('delete_size_product', {'id': taille.id})}}"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>    </tr>
+    {% endfor %}
+
+
+</tbody>
+</table>
+{% endif %}
+
+
+<p> Formulaire</p>
+<a href="{{ path('productsAdmin')}}">Retour vers la liste des produits </a>
+<div class="well">
+
+  {{ form(form) }}
+
+</div>
+
+
+
+{% endblock %}

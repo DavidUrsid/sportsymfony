@@ -1,0 +1,39 @@
+
+{% extends "AppBundle:Layout:templateadmin.html.twig" %}
+
+
+
+{% block body %}
+
+<h1>Gestions des tailles</h1>
+
+
+
+
+<table class="table table-hover">
+
+<thead>
+<tr>
+  <th>Tailles</th><th>Date de création</th><th>Date de modification</th> <th>Modfication</th>
+</tr>
+</thead>
+<tbody>
+
+    {% for taille in listSizes %}
+    <tr>  <td>{{ taille.libelle }}</td><td>{{ taille.createdAt|date("d/m/Y\\ H:i") }}</td> <td>{{ taille.updateAt|date("d/m/Y \\ H:i") }}</td><td><a href="{{ path('update_size', {'id':taille.id})}}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+           <a href="{{ path('delete_size', {'id': taille.id})}}"><i class="fa fa-trash" aria-hidden="true"></i></a> </td>    </tr>
+    {% endfor %}
+
+
+</tbody>
+</table>
+
+<p> Formulaire</p>
+<div class="well">
+
+  {{ form(form) }}
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,129 @@
+
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+
+
+
+
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+    <div class="col-sm-4 col-lg-8 col-md-6">
+                    <div class="thumbnail">
+                        <img src="{{asset('uploads/images/products/'~product.image)}}" height="400px"  height="300px">
+                      <div class="caption">
+                          
+                          <h4>{{product.description}} - {{product.team.libelle}}  </h4>
+                        <h4 class="pull-right"> {{product.prix}} €</h4>
+                          <p>{{product.commentaire}}</p>
+                      </div>
+                      <p> Passer commande</p>
+<div class="well">
+
+{% if is_granted('ROLE_USER')   %}
+ 
+
+  {{ form(form_panier) }}
+{% else  %}
+
+<p> Vous devez être connecté pour passer commande</p>
+
+{% endif %}
+
+
+
+
+
+</div>
+                  </div>
+ </div>
+
+  </article>
+
+
+
+  <div class="col-sm-4 col-lg-8 col-md-6">
+{% if listcomments is empty  %}
+
+  
+ <p> Pas encore de commentaire</p>
+        
+{% else %}
+
+{% for comment  in listcomments  %} 
+                  <div class="ratings">             
+
+                      
+                        <p class="">Commentaire: </p>
+                          <p>{{comment.comment}}</p>
+                        
+                        <p>Note:</p>
+                        {% if comment.note == 5  %}
+
+                     {% for i in 1..comment.note %}
+                <span class="glyphicon glyphicon-star"></span>
+                                  
+                {% endfor %}
+                {% elseif comment.note == 0  %}
+
+
+                  {% for i in 1..5 %}
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                                    
+                  {% endfor %}
+
+                {% else  %}
+
+                  {% for i in 1..comment.note %}
+                      <span class="glyphicon glyphicon-star"></span>
+                                    
+                  {% endfor %}
+
+
+                  {% for i in comment.note..4 %}
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                                    
+                  {% endfor %}
+
+
+                                      
+
+                       {% endif %}
+
+                          </p>
+                      </div>
+             
+{% endfor %}
+
+
+  
+
+
+{% endif %}
+  </div>
+{% if client is empty  %}
+<p> Vous devez commander un produit avant de pouvoir le commenter. </p>
+
+{% else %}
+
+  <p> Formulaire</p>
+<div class="well">
+
+
+    {{ form_errors(form_comment) }}
+
+
+  {{ form(form_comment) }}
+
+</div>
+{% endif %}
+
+
+
+
+</section>
+{% endblock %}
+  

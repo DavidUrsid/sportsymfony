@@ -1,0 +1,49 @@
+{% extends "AppBundle:Layout:templateadmin.html.twig" %}
+
+
+{% block body %}
+
+<h1>Gestions des ligues</h1>
+
+
+
+{{League.libelle}}
+<table class="table table-hover">
+
+<thead>
+<tr>
+  <th>logo</th><th>Ligues</th><th>Sport</th><th>Commentaire</th>
+<th>Date de création</th><th>Date de modification</th> <th>Modfication</th>
+</tr>
+</thead>
+<tbody>
+
+
+    <tr> 
+    <td><img src="{{asset('uploads/images/league/'~League.image)}}" height="80px"  height="40px"/></td>
+     <td>{{ League.libelle }}</td>
+     <td>{{ League.commentaire }}</td>
+     <td>{{ League.sport.libelle }}</td>
+     <td>{{League.createdAt|date("d/m/Y\\ H:i") }}</td> 
+     <td>{{ League.updateAt|date("d/m/Y \\ H:i") }}</td>
+     <td>
+           <a href="{{ path('delete_league', {'id':League.id})}}"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+     </td> 
+     </tr>
+
+
+
+</tbody>
+</table>
+
+
+
+<p> Formulaire</p>
+<div class="well">
+
+  {{ form(form) }}
+
+</div>
+
+
+{% endblock %}

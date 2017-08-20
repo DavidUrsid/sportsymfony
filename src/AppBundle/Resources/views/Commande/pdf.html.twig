@@ -1,0 +1,38 @@
+
+
+{% set total = 0 %}
+
+<p> Votre facture</p>
+
+<table class="table table-hover">
+    	   <thead>
+<tr>
+  <th>Nom du produit</th><th>équipe</th><th>Quantité</th><th>Prix</th>
+</tr>
+</thead>
+<tbody>
+        
+        {% for com  in commandepanier %}
+    <tr>  
+
+    <td>{{ com.panier.product.description }} </td>
+    <td>{{ com.panier.product.team.libelle }} </td>
+    
+    <td>{{ com.panier.quantity }} </td>
+    <td>{{ com.panier.total }} </td>
+      
+  
+
+      
+    </tr>
+
+   {% set total = total + com.panier.total %}
+    </tbody>
+</table>
+
+
+    {% endfor %} 
+
+    	    	    	
+    	<p>Total Commande : {{ total }}€</p>
+    

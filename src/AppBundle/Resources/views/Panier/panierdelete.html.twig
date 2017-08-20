@@ -1,0 +1,61 @@
+
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+
+<h1>Modifier mon panier</h1>
+
+
+
+<table class="table table-hover">
+    	   <thead>
+<tr>
+  <th>Equipe</th><th>Description</th><th>Image</th><th>Taille</th><th>Quantité</th><th>Prix</th><th>Modification</th>
+</tr>
+</thead>
+<tbody>
+    		
+    		
+    <tr>  
+    	
+    	<td>{{ panier.product.team.libelle }}</td>
+    	<td>{{ panier.product.description }}</td>
+    	<td><img src="{{asset('uploads/images/products/'~panier.product.image)}}" height="200px"  height="150px"/></td> 
+    	
+		<td>{{ panier.size.size.libelle }}</td>
+		<td>{{ panier.quantity }}</td>
+		<td>{{ panier.total }} €</td>
+    	<td>
+           <a href="{{ path('delete_panier', {'id': panier.id})}}"><span class="glyphicon glyphicon glyphicon-trash"></span></a> 
+       </td>
+    </tr>
+
+ 
+
+
+    	
+    	
+
+   
+
+</tbody>
+</table>
+   
+<div >
+ <p>Confirmer la suppression.</p>
+  
+{{(form(form))}}
+</div>
+ </div>
+
+
+
+
+  </article>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+
+
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+     {% for team in listTeams %}
+                  <div class="col-sm-4 col-lg-6 col-md-6">
+      <div class="thumbnail">
+<a href="{{ path('categorycatalog', {'id': team.id})}}"><img src="{{asset('uploads/images/team/'~team.image)}}" height="180px"  width="140px" ></a>
+          
+        <div class="caption">
+                          
+            <h4>{{team.libelle}}  </h4>
+         
+            <p>{{team.commentaire}} </p>
+        </div>
+        
+
+    </div>
+ </div>
+
+
+        {% endfor %}
+    
+  </article>
+
+
+
+
+</section>
+
+{% endblock %}

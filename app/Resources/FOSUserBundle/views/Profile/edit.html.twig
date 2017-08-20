@@ -1,0 +1,25 @@
+{% extends "AppBundle:Layout:templatefos.html.twig" %}
+
+{% block body %}
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+
+
+{% block fos_user_content %}
+{% include "@FOSUser/Profile/edit_content.html.twig" %}
+{% endblock fos_user_content %}
+
+
+
+
+ </article>
+
+ </div>
+
+
+
+</section>
+
+{% endblock %}

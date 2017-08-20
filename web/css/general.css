@@ -1,0 +1,177 @@
+@font-face {
+    font-family: "CD";
+        src:
+            url('../police/CD-Regular.eot')format('eot'),
+            url('../police/CD-Regular.woff')format('woff'),
+            url('../police/CD-Regular.tff')format('truetype'),
+            url('../police/CD-Regular.svg')format('svg');
+
+}
+
+h1{
+  font-size: 2em;
+}
+
+h2{
+  font-size: 1.8em;
+}
+
+
+h3{
+  font-size: 1.5em;
+}
+
+
+h4{
+  font-size: 1.3em;
+}
+
+h5{
+  font-size: 1.1em;
+}
+
+h6{
+  font-size: 0.8em;
+}
+
+html{
+
+margin: 0px;
+padding: 0px;
+outline: 0px;
+
+}
+body
+{width: 100%;
+margin-right:auto;
+margin-left:auto;
+height:100%;
+display:flex;
+flex-direction: column;
+font-family:"CD";
+
+
+}
+
+
+/*header*/
+header
+{position: relative;
+
+padding: 0.2em;
+display: flex;
+flex-direction: column;
+justify-content:flex-start;
+background-color:  white;
+color: black;
+}
+
+
+
+.haut{
+  margin-top: 0em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.5em 0.5em 0 0.5em;
+}
+
+
+
+.hautgauche{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+.nomsite{
+
+  font-size: 2em;
+
+}
+
+
+
+
+.menuprin 
+{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+border-top: solid;
+border-color: black;
+
+
+}
+
+
+
+/*section du milleu de page*/
+
+.toutmillieu{
+display: flex;
+flex-direction: row;
+width: 100%;
+background-color: #FFEFD5;
+height: 90%;
+}
+
+.millieu
+{
+display: flex;
+flex: 1 0 auto;
+text-align: justify;
+width: 80%;
+margin-left: 10%;
+margin-right: 10%;
+background-color: white;
+color: black;
+font-size: 1.2em;
+}
+
+/*Footer*/
+footer
+{
+bottom: 0;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+border:5px solid #C0C0C0;
+padding: 5px;
+height: 10%;
+}
+
+
+
+.footerhaut{
+  margin-left: 10%;
+margin-right: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+
+.contact{
+  dispaly:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+.lien{
+  dispaly:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.footerbas{
+
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+
+}
+
+}

@@ -1,0 +1,38 @@
+
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+
+
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+     {% for league in listLeague %}
+                  <div class="col-sm-4 col-lg-6 col-md-6">
+      <div class="thumbnail">
+<a href="{{ path('teamcatalog', {'id': league.id})}}"><img src="{{asset('uploads/images/league/'~league.image)}}" height="200px"  width="160px" ></a>
+          
+        <div class="caption">
+                          
+            <h4>{{league.libelle}}  </h4>
+         
+            <p>{{league.commentaire}} </p>
+        </div>
+        
+
+    </div>
+ </div>
+
+
+        {% endfor %}
+    
+  </article>
+
+
+
+
+</section>
+
+{% endblock %}

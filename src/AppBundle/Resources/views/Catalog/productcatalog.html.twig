@@ -1,0 +1,39 @@
+
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+
+
+
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+     {% for product in listProduct %}
+                  <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                           <img src="{{asset('uploads/images/products/'~product.image)}}" height="200px"  height="150px"/>
+                            <div class="caption">
+                                <h4 class="pull-right">{{product.prix}} €</h4>
+                                <h4><a href="{{ path('product', {'id': product.id})}}">{{product.description}} - {{product.team.libelle}}</a>
+                                    
+                                </h4>
+                                <p>{{product.commentaire}}</p>
+                            </div>
+                            
+                    </div>
+
+                </div>
+
+
+        {% endfor %}
+    
+  </article>
+
+
+
+
+</section>
+
+{% endblock %}

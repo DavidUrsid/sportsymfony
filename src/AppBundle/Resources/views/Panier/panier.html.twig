@@ -1,0 +1,77 @@
+
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+
+<h1>Mon panier</h1>
+
+
+
+{% if listPanier is empty  %}
+
+<p>Votre panier est vide</p>
+
+
+
+
+{% else  %}
+
+
+
+
+<table class="table table-hover">
+         <thead>
+<tr>
+  <th>Equipe</th><th>Description</th><th>Image</th><th>Taille</th><th>quantité</th><th>Prix TTC</th><th>Prix HT</th><th>Tva</th><th>Modification</th>
+</tr>
+</thead>
+<tbody>
+        
+        {% for panier  in listPanier %}
+    <tr>  
+      
+      <td>{{ panier.product.team.libelle }}</td>
+      <td>{{ panier.product.description }}</td>
+      <td><img src="{{asset('uploads/images/products/'~panier.product.image)}}" height="200px"  height="150px"/></td> 
+      
+    <td>{{ panier.size.size.libelle }}</td>
+    <td>{{ panier.quantity }}</td>
+    <td>{{ panier.total }} €</td>
+    <td>{{ panier.ht }} €</td>
+     <td>{{ panier.tva }} €</td>
+      <td><a href="{{ path('update_panier', {'id': panier.id})}}"><span class="glyphicon gglyphicon glyphicon-plus">Modifier les quantités</span></a>
+           <a href="{{ path('delete_panier', {'id': panier.id})}}"><span class="glyphicon glyphicon glyphicon-trash"></span></a> 
+       </td>
+    </tr>
+
+ 
+    {% endfor %} 
+
+      
+      
+
+   
+
+</tbody>
+</table>
+    <p class="pull-right"> Valider votre commande:  {{totalcommande}} €</p>
+<div class="well pull-right" >
+ 
+
+  {{ form(form_commande) }}
+
+
+</div>
+ </div>
+   {% endif %} 
+
+
+
+  </article>
+</section>
+{% endblock %}

@@ -1,0 +1,63 @@
+{# src/OC/PlatformBundle/Resources/views/Users/index.html.twig #}
+{% extends "AppBundle:Layout:templategeneral.html.twig" %}
+
+{% block body %}
+
+
+  <div class="millieu">
+
+
+
+
+	
+
+
+
+
+
+
+
+  <article class="arti">
+  <h1>Titre1</h1>
+
+
+
+<div class="row">
+
+
+	
+{% for products in listproducts %}
+   
+
+
+<div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                           <img src="{{asset('uploads/images/products/'~products.image)}}" height="200px"  height="150px"/>
+                            <div class="caption">
+                                <h4 class="pull-right">{{products.prix}} €</h4>
+                                <h4><a href="{{ path('product', {'id': products.id})}}">{{products.description}} - {{products.team.libelle}}</a>
+                                    
+                                </h4>
+                                <p>{{products.commentaire}}</p>
+                            </div>
+                            
+                    </div>
+
+                </div>
+
+
+
+{% endfor %}
+
+
+
+
+                 
+
+</article>
+
+</div>
+
+
+
+{% endblock %}

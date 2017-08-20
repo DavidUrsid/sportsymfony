@@ -1,0 +1,50 @@
+
+{% extends "AppBundle:Layout:templateadmin.html.twig" %}
+
+
+
+{% block body %}
+
+<h1>Gestions des produits</h1>
+
+
+
+<table class="table table-hover">
+
+<thead>
+<tr>
+  <th>Image du produit</th><th>Produict</th><th>Description du produit</th><th>Taille</th><th>Prix Total</th><th>Prix HT</th><th>Tva</th><th>Date de création</th><th>Date de modification</th> <th>Modfication</th>
+</tr>
+</thead>
+<tbody>
+
+    {% for panier in listPaniers %}
+    <tr>
+   
+       <td><img src="{{asset('uploads/images/products/'~panier.panier.product.image)}}" height="200px"  height="150px"/></td> 
+      <td>{{ panier.panier.product.description }}</td>
+      <td>{{ panier.panier.product.commentaire }}</td>
+      <td>{{ panier.panier.size.size.libelle }}</td>
+       <td>{{ panier.panier.quantity }}</td>
+      <td>{{ panier.panier.total }}</td>
+      <td>{{ panier.panier.ht }}</td>
+      <td>{{ panier.panier.tva }}</td>
+     <td>{{ panier.panier.createdAt|date("d/m/Y \\ H:i") }}</td>
+      <td>{{ panier.panier.updateAt|date("d/m/Y \\ H:i") }}</td>
+
+            <td>
+             
+              
+          
+         </td>    </tr>
+
+    {% endfor %}
+
+
+</tbody>
+</table>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+
+{% extends "AppBundle:Layout:templateadmin.html.twig" %}
+
+
+
+{% block body %}
+
+
+<h1>Gestions des équipes</h1>
+
+
+
+
+<table class="table table-hover">
+
+<thead>
+<tr>
+  <th>logo</th><th>Sport</th><th>Ligue</th><th>Commentaire</th><th>Date de création</th><th>Date de modification</th> <th>Modfication</th>
+</tr>
+</thead>
+<tbody>
+{% for Team in listTeam %}
+    <tr> 
+    	<td><img src="{{asset('uploads/images/team/'~Team.image)}}" height="80px"  height="40px"/></td>
+    	<td>{{Team.libelle }}</td>
+       <td>{{Team.commentaire }}</td>
+    	<td>{{ Team.league.libelle }}</td>
+    	<td>{{Team.createdAt|date("d/m/Y\\ H:i") }}</td> 
+    	<td>{{Team.updateAt|date("d/m/Y \\ H:i") }}</td>
+    	<td>
+    		<a href="{{ path('update_team', {'id': Team.id})}}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+           <a href="{{ path('delete_team', {'id':Team.id})}}"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+       	</td>
+    </tr>
+ {% endfor %}
+
+
+
+
+
+</tbody>
+</table>
+
+<p> Formulaire</p>
+<div class="well">
+
+  {{ form(form) }}
+
+</div>
+
+{% endblock %}

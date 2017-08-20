@@ -1,0 +1,48 @@
+
+{% extends "AppBundle:Layout:templateadmin.html.twig" %}
+
+
+{% block body %}
+
+<h1>Gestions des sports</h1>
+
+
+
+{{sport.libelle}}
+<table class="table table-hover">
+
+<thead>
+<tr>
+  <th>logo</th><th>sports</th><th>Commentaire</th><th>Date de création</th><th>Date de modification</th> <th>Modfication</th>
+</tr>
+</thead>
+<tbody>
+
+
+    <tr> 
+    	<td><img src="{{asset('uploads/images/sport/'~sport.image)}}" height="80px"  height="40px"/></td>
+    	<td>{{ sport.libelle }}</td>
+      <td>{{ sport.commentaire }}</td>
+    	<td>{{sport.createdAt|date("d/m/Y\\ H:i") }}</td> 
+      <td>{{ sport.updateAt|date("d/m/Y \\ H:i") }}</td>
+    	<td>
+           <a href="{{ path('delete_sport', {'id': sport.id})}}"><i class="fa fa-trash" aria-hidden="true"></i></a> 
+       </td>   
+   </tr>
+
+
+
+</tbody>
+</table>
+
+
+
+<p> Formulaire</p>
+<div class="well">
+
+  {{ form(form) }}
+
+</div>
+
+
+{% endblock %}

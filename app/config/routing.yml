@@ -1,0 +1,400 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+# app/config/routing.yml
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+
+
+home:
+    path:     /
+    defaults:
+        _controller: AppBundle:Users:index
+
+index:
+    path:     /index
+    defaults:
+        _controller: AppBundle:Users:index
+
+
+presentation:
+    path:     /presentation
+    defaults:
+        _controller: AppBundle:Users:presentation
+
+contact:
+    path:     /contact
+    defaults:
+        _controller: AppBundle:Users:contact
+
+
+mentionslegales:
+    path:     /mentionslegales
+    defaults:
+        _controller: AppBundle:Users:mentionslegales
+
+
+conditionsgenerales:
+      path:     /conditionsgenerales
+      defaults:
+          _controller: AppBundle:Users:conditionsgenerales
+
+
+
+
+
+
+
+
+
+products:
+      path:     /products
+      defaults:
+          _controller: SportUsersBundle:Products:products
+
+product:
+      path:     /product/{id}
+      defaults:
+          _controller: AppBundle:Users:product
+
+
+# ####################################################### Gestion Comment
+add_comment:
+      path:     /comment/{product_id}
+      defaults:
+          _controller: AppBundle:Comments:addComment
+
+comment:
+      path:     /comment
+      defaults:
+          _controller: AppBundle:Comments:comment
+
+
+# ####################################################### Gestion Panier
+
+
+add_panier:
+      path:     /panier/add/{product_id}
+      defaults:
+          _controller: AppBundle:Paniers:addPanier
+
+
+panier:
+      path:     /panier
+      defaults:
+          _controller: AppBundle:Paniers:panier
+
+update_panier:
+      path:     /update_panier/{id}
+      defaults:
+          _controller: AppBundle:Paniers:panierupdate
+
+delete_panier:
+      path:     /delete_panier/{id}
+      defaults:
+          _controller: AppBundle:Paniers:panierdelete
+
+comment:
+      path:     /comment
+      defaults:
+          _controller: AppBundle:Commandes:comment
+# ####################################################### Gestion Commandes
+ 
+add_commande:
+      path:     /addcommande
+      defaults:
+          _controller: AppBundle:Commandes:addCommande
+
+commande:
+      path:     /commande
+      defaults:
+          _controller: AppBundle:Commandes:commande
+
+
+commandes:
+      path:     /mes_commandes
+      defaults:
+          _controller: AppBundle:Commandes:commandes
+
+voir_commande:
+      path:     /ma_commande/{id}
+      defaults:
+          _controller: AppBundle:Commandes:VoirCommande
+
+
+pdf:
+      path:     /pdfcommande
+      defaults:
+          _controller: AppBundle:Commandes:pdf
+
+
+# ####################################################### Gestion Cataglogue
+sportcatalog:
+      path: /sportcatalog
+      defaults:
+         _controller: AppBundle:Catalog:Sport
+
+
+leaguecatalog:
+      path: /leaguecatalog/{id}
+      defaults:
+         _controller: AppBundle:Catalog:League
+
+teamcatalog:
+      path: /teamcatalog/{id}
+      defaults:
+         _controller: AppBundle:Catalog:Team
+
+categorycatalog:
+      path: /categorycatalog/{id}
+      defaults:
+         _controller: AppBundle:Catalog:Category
+
+productcatalog:
+      path: /productcatalog/{id}/{idteam}
+      defaults:
+         _controller: AppBundle:Catalog:Product
+
+# ####################################################### Fonction recherche
+
+recherche:
+      path: /recherche
+      defaults:
+         _controller: AppBundle:Users:recherche
+
+rechercheresultat:
+      path: /recherche_resultat/{$listTeams}
+      defaults:
+         _controller: AppBundle:Users:rechercheresultat
+
+# ####################################################### Gestion Admin
+
+dashboard:
+      path:     /admin/dashboard
+      defaults:
+          _controller: AppBundle:DashboardAdmin:dashboard
+
+
+# Admin Produit
+
+
+
+productsAdmin:
+      path:     /admin/products
+      defaults:
+          _controller: AppBundle:ProductsAdmin:products
+
+
+update_product:
+      path:     /admin/update_product/{id}
+      defaults:
+          _controller: AppBundle:ProductsAdmin:productupdate
+
+delete_product:
+      path:     /admin/delete_product/{id}
+      defaults:
+          _controller: AppBundle:ProductsAdmin:productdelete
+
+
+
+view_products:
+      path:     /admin/view_product
+      defaults:
+          _controller: AppBundle:ProductsAdmin:view
+
+
+comment_product: 
+      path:     /admin/comment_product/{id}
+      defaults:
+          _controller: AppBundle:ProductsAdmin:comment
+
+update_comment:
+      path:     /admin/updatecomment/{id}
+      defaults:
+          _controller: AppBundle:ProductsAdmin:updatecomment
+
+delete_comment:
+      path:     /admin/deletecomment/{id}
+      defaults:
+          _controller: AppBundle:ProductsAdmin:deletecomment
+
+# Admin Size Produit
+
+size_product:
+      path:     /admin/size_product/{id}
+      defaults:
+          _controller: AppBundle:SizeProductsAdmin:sizes
+
+update_size_product:
+      path:     /admin/update_size_product/{id}
+      defaults:
+          _controller: AppBundle:SizeProductsAdmin:updatesize
+
+
+delete_size_product:
+      path:     /admin/delete_size_product/{id}
+      defaults:
+          _controller: AppBundle:SizeProductsAdmin:deletesize
+
+
+# Admin Sport
+
+sportsAdmin:
+      path:     /admin/sports
+      defaults:
+          _controller: AppBundle:SportsAdmin:sports
+
+update_sport:
+      path:     /admin/update_sport/{id}
+      defaults:
+          _controller: AppBundle:SportsAdmin:sportsupdate
+
+
+delete_sport:
+      path:     /admin/delete_sport/{id}
+      defaults:
+          _controller: AppBundle:SportsAdmin:sportsdelete
+
+
+# Admin customers / users
+
+customersAdmin:
+      path:     /admin/customers
+      defaults:
+          _controller: AppBundle:CustomersAdmin:customers
+
+update_customer:
+      path:     /admin/customerupdate/{id}
+      defaults:
+          _controller: AppBundle:CustomersAdmin:customerupdate
+
+
+# Admin categories
+categoriesAdmin:
+      path:     /admin/categories
+      defaults:
+          _controller: AppBundle:CategoriesAdmin:categories
+
+
+update_category:
+      path:     /admin/update_category/{id}
+      defaults:
+          _controller: AppBundle:CategoriesAdmin:categoryupdate
+
+
+delete_category:
+      path:     /admin/delete_category/{id}
+      defaults:
+          _controller: AppBundle:CategoriesAdmin:categorydelete
+
+
+
+# Admin Size 
+sizesAdmin:
+      path:     /admin/sizes
+      defaults:
+          _controller: AppBundle:SizesAdmin:sizes
+
+update_size:
+      path:     /admin/update_size/{id}
+      defaults:
+          _controller: AppBundle:SizesAdmin:sizeupdate
+
+
+delete_size:
+      path:     /admin/delete_size/{id}
+      defaults:
+          _controller: AppBundle:SizesAdmin:sizedelete
+
+
+# Admin league
+
+leaguesAdmin:
+    path:     /admin/leagues
+    defaults:
+        _controller: AppBundle:LeaguesAdmin:leagues
+
+update_league:
+    path:     /admin/update_league/{id}
+    defaults:
+        _controller: AppBundle:LeaguesAdmin:leaguesupdate
+
+delete_league:
+    path:    /admin/delete_league/{id}
+    defaults:
+        _controller: AppBundle:LeaguesAdmin:leaguesdelete
+
+
+# Admin equipe
+
+teamsAdmin:
+        path:     /admin/teams
+        defaults:
+            _controller: AppBundle:TeamsAdmin:teams
+
+update_team:
+        path:     /admin/update_team/{id}
+        defaults:
+            _controller: AppBundle:TeamsAdmin:teamsupdate
+
+
+delete_team:
+        path:     /admin/delete_team/{id}
+        defaults:
+            _controller: AppBundle:TeamsAdmin:teamsdelete
+
+
+# Admin option
+
+playersAdmin:
+        path:     /admin/player
+        defaults:
+            _controller: AppBundle:PlayersAdmin:player
+
+update_player:
+        path:     /admin/update_player/{id}
+        defaults:
+            _controller: AppBundle:PlayersAdmin:playerupdate
+
+
+delete_player:
+        path:     /admin/delete_player/{id}
+        defaults:
+            _controller: AppBundle:PlayersAdmin:playerdelete
+
+
+
+
+# Admin orders / Commandes
+
+ordersAdmin:
+      path:     /admin/orders
+      defaults:
+          _controller: AppBundle:OrdersAdmin:commandes
+
+update_orders:
+      path:     /admin/ordersupdate/{id}
+      defaults:
+          _controller: AppBundle:OrdersAdmin:commandesupdate
+
+delete_orders:
+      path:     /admin/ordersdelete/{id}
+      defaults:
+          _controller: AppBundle:OrdersAdmin:commandesdelete         

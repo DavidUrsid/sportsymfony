@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+
+
+
+
+    <link rel="stylesheet" href="{{ asset('css/admin/adminboot.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/admin/font-awesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/adminlocal.css') }}">
+
+     <link rel="stylesheet" href="{{ asset('js/admin/dist/css/select2.min.css') }}">
+
+
+
+    
+
+     
+
+    <script type="text/javascript" src="{{ asset('js/admin/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/admin/adminbootstrap.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('js/admin/dist/js/select2.min.js') }}"></script>
+
+
+
+
+
+   
+
+
+      <style>
+
+        div {
+            padding-bottom:20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{{ path('index')}}">Sport Symfonique</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li><a href="{{ path('dashboard')}}"><i class="fa fa-bullseye"></i> Dashboard</a></li>
+                    <li><a href="{{ path('customersAdmin')}}"><i class="fa fa-address-card-o"></i> Liste client</a></li>
+                    <li class="dropdown user-dropdown">
+                      <li><a href="{{ path('ordersAdmin')}}"><i class="fa fa-shopping-bag"></i> Gestion commande</a></li>
+
+
+                    <li class="dropdown user-dropdown">  <a href="" class="dropdown-toggle" data-toggle="dropdown" ><i class="fa fa-shopping-cart"></i> Gestion des produits<b class="caret"></b></a>
+<ul class="dropdown-menu">
+    <li><a href="{{ path('productsAdmin')}}"><i class="fa fa-plus-square"></i> Ajouter un produit </a></li>
+
+<li><a href="{{ path('view_products')}}"><i class="fa fa-plus-square"></i> Voir tout les produits. </a></li></li>
+</ul>
+
+                    </li>
+
+
+
+                    <li class="dropdown user-dropdown">
+                      <a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> Options produits<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{{ path('sportsAdmin')}}"><i class="fa fa-plus-square"></i> Sports </a></li>
+                        <li><a href="{{ path('leaguesAdmin')}}"><i class="fa fa-plus-square"></i> ligues </a></li>
+                        <li><a href="{{ path('teamsAdmin')}}"><i class="fa fa-plus-square"></i> Equipes</a></li>
+                        <li><a href="{{ path('playersAdmin')}}"><i class="fa fa-plus-square"></i> Nom des joueurs</a></li>
+                        <li><a href="{{ path('categoriesAdmin')}}"><i class="fa fa-plus-square"></i> Categories </a></li>
+                        <li><a href="{{ path('sizesAdmin')}}" ><i class="fa fa-plus-square"></i> Gestion des tailles</a></li>
+                        <li><a href="{{ path('sizesAdmin')}}" ><i class="fa fa-plus-square"></i> Gestion des tailles</a></li>
+
+                      </ul>
+                    </li>
+                  
+
+                </ul>
+
+                
+            </div>
+        </nav>
+
+       <div>
+
+             {% block body %}
+           {% endblock %}
+    </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+
+
+<script >
+    $(document).ready(function(){
+
+        $('.select2').select2({
+            placeholder: "Choisir son sport",
+        allowClear: true,
+        });
+ 
+    });
+
+
+      $(document).ready(function(){
+
+      $.tablesorter.addParser({ 
+        // set a unique id 
+        id: 'grades', 
+        is: function(s) { 
+            // return false so this parser is not auto detected 
+            return false; 
+        }, 
+        format: function(s) { 
+            // format your data for normalization 
+            return s.toLowerCase().replace(/good/,2).replace(/medium/,1).replace(/bad/,0); 
+        }, 
+        // set type, either numeric or text 
+        type: 'numeric' 
+    }); 
+     
+    $(function() { 
+        $("table").tablesorter({ 
+            headers: { 
+                6: { 
+                    sorter:'grades' 
+                } 
+            } 
+        }); 
+    });                  
+    
+    });
+</script>
+
+
+</html>

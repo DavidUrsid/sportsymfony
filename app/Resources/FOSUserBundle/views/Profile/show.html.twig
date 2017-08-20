@@ -1,0 +1,33 @@
+{% extends "AppBundle:Layout:templatefos.html.twig" %}
+
+{% block body %}
+<section class="toutmillieu">
+
+  <div class="millieu">
+  <article class="arti">
+<a href="{{ path('fos_user_profile_edit')}}" class="btn btn-primary">
+        Modifier son profil
+      </a>
+<a href="{{ path('fos_user_change_password')}}" class="btn btn-primary">
+       Changer son mot de passe
+      </a>
+
+ <a href="{{ path('commandes')}}" class="btn btn-primary">
+       Mes Commandes
+      </a>     
+{% block fos_user_content %}
+
+{% include "@FOSUser/Profile/show_content.html.twig" %}
+{% endblock fos_user_content %}
+
+
+
+ </article>
+
+ </div>
+
+
+
+</section>
+
+{% endblock %}

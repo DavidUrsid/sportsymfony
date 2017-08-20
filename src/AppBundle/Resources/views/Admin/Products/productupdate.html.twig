@@ -1,0 +1,46 @@
+
+{% extends "AppBundle:Layout:templateadmin.html.twig" %}
+
+
+{% block body %}
+
+<h1>Gestions des ligues</h1>
+
+
+
+
+<table class="table table-hover">
+
+<thead>
+<tr>
+<th>Image</th><th>Categorie</th><th>Description</th><th>Commentaire</th><th>Equipe</th><th>Joueur</th><th>prix</th><th>Date de création</th><th>Date de modification</th> <th>Modfication</th>
+</tr>
+</thead>
+<tbody>
+
+
+  <tr>  <td> <img src="{{asset('uploads/images/products/'~product.image)}}" height="200px"  height="150px"/></td> <td>{{ product.category.libelle }}</td> <td>{{ product.description }}</td><td>{{ product.commentaire }}</td><td>{{ product.team.libelle }}</td><td>{{ product.player.libelle }} €</td><td>{{ product.prix }} €</td>
+    <td>{{ product.createdAt|date("d/m/Y\\ H:i") }}</td>
+          <td>{{ product.updateAt|date("d/m/Y \\ H:i") }}</td>
+
+          <td>
+            <a href="{{ path('size_product', {'id': product.id})}}"><i class="fa fa-plus" aria-hidden="true"></i>Gestion des tailles et du stocks</a>
+
+         <a href="{{ path('delete_product', {'id': product.id})}}"><i class="fa fa-trash" aria-hidden="true"></i>Supprimer ce produit</a> </td>    </tr>
+
+
+
+</tbody>
+</table>
+
+
+
+<p> Formulaire</p>
+<div class="well">
+
+  {{ form(form) }}
+
+</div>
+
+
+{% endblock %}
